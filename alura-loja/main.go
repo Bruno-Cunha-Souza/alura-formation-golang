@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/Bruno-Cunha-Souza/alura-loja/routes"
+	"github.com/Bruno-Cunha-Souza/alura-formation-golang/alura-loja/routes"
 )
 
 func main() {

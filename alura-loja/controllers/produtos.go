@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"text/template"
 
-	"github.com/Bruno-Cunha-Souza/alura-loja/models"
+	"github.com/Bruno-Cunha-Souza/alura-formation-golang/alura-loja/models"
 )
 
 var temp = template.Must(template.ParseGlob("templates/*.html"))
@@ -40,13 +40,13 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 
 		models.CriarNovoProduto(nome, descricao, precoConvertido, quantidadeConvertido)
 	}
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 func Delete(w http.ResponseWriter, r *http.Request) {
 	idDoProduto := r.URL.Query().Get("id")
 
 	models.DeletaProduto(idDoProduto)
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 
 func Edit(w http.ResponseWriter, r *http.Request) {
@@ -82,5 +82,5 @@ func Update(w http.ResponseWriter, r *http.Request) {
 
 		models.AtualizaProduto(idConvertidoPraInt, nome, descricao, precoConvertido, quantidadeConvertido)
 	}
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }

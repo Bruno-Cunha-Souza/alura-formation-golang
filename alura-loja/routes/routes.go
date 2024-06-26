@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	"github.com/Bruno-Cunha-Souza/alura-loja/controllers"
+	"github.com/Bruno-Cunha-Souza/alura-formation-golang/alura-loja/controllers"
 )
 
 func CarregaRotas() {

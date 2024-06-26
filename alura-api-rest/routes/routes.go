@@ -5,12 +5,14 @@ import (
 	"net/http"
 
 	"github.com/Bruno-Cunha-Souza/alura-formation-golang/alura-api-rest/controllers"
+	"github.com/Bruno-Cunha-Souza/alura-formation-golang/alura-api-rest/middleware"
 	"github.com/gorilla/mux"
 )
 
 func HandleRequest() {
 	// gorilla/mux
 	r := mux.NewRouter()
+	r.Use(middleware.ContentTypeMiddleware)
 
 	r.HandleFunc("/", controllers.Home)
 	r.HandleFunc("/api/personalidades", controllers.AllPersonas).Methods("Get")

@@ -66,13 +66,14 @@ func EditAluno(c *gin.Context) {
 	id := c.Params.ByName("id")
 	database.DB.First(&aluno, id)
 
+	// Atualizar os campos do aluno com os dados da solicitação JSON
 	if err := c.ShouldBindJSON(&aluno); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error: ": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	// Validação do aluno
 	if err := models.ValidaAlunos(&aluno); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error: ": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
